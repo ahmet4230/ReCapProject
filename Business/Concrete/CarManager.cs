@@ -27,7 +27,7 @@ namespace Business.Concrete
             }
             else
             {
-                Console.WriteLine("Lütfen tekrar deneyin aracın günlük fiyatı sıfır olmalı ve araç ismi 2 karakterden uzun olmalı");
+                Console.WriteLine("Lütfen tekrar deneyin aracın günlük fiyatı sıfırdan büyük  olmalı ve araç ismi 2 karakterden uzun olmalı");
             }
         }
 
