@@ -14,7 +14,7 @@ namespace ConsoleUI
             carmanager.Add(new Car{ BrandId = 1, ColorId = 1, ModelYear = 2010, DailyPrice = 1000, Description = "OPEL" });
             foreach (var car in carmanager.GetAll())
             {
-                Console.WriteLine(car.DailyPrice);
+                Console.WriteLine("Araç ismi "  + car.Description + "Aracın günlük fiyat " + car.DailyPrice);
             }
                 
 
