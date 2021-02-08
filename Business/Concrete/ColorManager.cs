@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,38 +10,36 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        IColorService _colorService;
+        IColorDal _colorDal;
 
-        public ColorManager(IColorService colorService)
+        public ColorManager(IColorDal colorDal)
         {
-            _colorService = colorService;
+            _colorDal = colorDal;
         }
 
         public void Add(Color color)
         {
-            _colorService.Add(color);
+            _colorDal.Add(color);
         }
 
         public void Delete(Color color)
         {
-            _colorService.Delete(color);
+            _colorDal.Delete(color);
         }
-
-        
 
         public List<Color> GetAll()
         {
-            return _colorService.GetAll();
+           return _colorDal.GetAll();
         }
 
         public Color GetById(int id)
         {
-            throw new NotImplementedException();
+            return _colorDal.Get(c => c.Id == id);
         }
 
         public void Update(Color color)
         {
-            _colorService.Update(color);
+            _colorDal.Update(color);
         }
     }
 }
