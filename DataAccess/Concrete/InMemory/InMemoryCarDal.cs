@@ -46,6 +46,11 @@ namespace DataAccess.Concrete.InMemory
             return _car;
         }
 
+        public List<User> GetAll(Expression<Func<User, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();

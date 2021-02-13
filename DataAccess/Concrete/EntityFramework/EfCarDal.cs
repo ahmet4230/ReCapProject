@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,14 +16,27 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<CarDetailDto> GetCarDetails()
         {
-            var result = from c in GetAll()
-                         join b in new EfBrandDal().GetAll()
-                         on c.BrandId equals b.Id
-                         join clr in new EfColorDal().GetAll()
-                         on c.ColorId equals clr.Id
-                         select new CarDetailDto { CarName = c.Description, BrandName = b.BrandName, ColorName = clr.ColorName, DailyPrice = c.DailyPrice };
-            return result.ToList();
+            using (ReCapContext context = new ReCapContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.Id
+                             join clr in context.Colors
+                             on c.ColorId equals clr.Id
+                             select new CarDetailDto
+                             {
+                                 CarName = c.Description,
+                                 BrandName = b.BrandName,
+                                 ColorName = clr.ColorName,
+                                 DailyPrice = c.DailyPrice
+
+                             };
+                //result=result.Where(c => c.DailyPrice > 200);                
+                return result.ToList();
+            }
+          
         }
+
         
     }
 }
