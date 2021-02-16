@@ -77,8 +77,9 @@ namespace ConsoleUI
             var result = rentalManager.GetRentalDetails();
             foreach (var rental in result.Data)
             {
-                Console.WriteLine("Aracı kiralayan kiş: {0} Kiralama Numarası: {1} Kiralama tarihi: {2}  Teslim tarihi: {3}  " , rental.UserName , rental.RentalId , rental.RentDate ,rental.ReturnDate );
+                Console.WriteLine("Aracı kiralayan kiş: {0} Kiralama Numarası: {1} Kiralama tarihi: {2}  Teslim tarihi: {3}  " , rental.UserName , rental.RentalId , rental.RentDate ,rental.ReturnDate , result );
             }
+            
 
 
             
