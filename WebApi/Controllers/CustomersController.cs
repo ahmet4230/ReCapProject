@@ -20,7 +20,7 @@ namespace WebApi.Controllers
             _customerService = customerService;
         }
         [HttpGet("Getall")]
-        public IActionResult GetAll()
+        public IActionResult GetAllCustomers()
         {
             var result = _customerService.GetAll();
             if (result.Success)
